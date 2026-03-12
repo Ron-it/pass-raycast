@@ -49,7 +49,7 @@ function ItemDetail({ item }: { item: Item }) {
 
   async function loadDetail() {
     try {
-      const itemDetail = await getItem(item.shareId, item.itemId);
+      const itemDetail = await getItem(item.shareId, item.itemId, item.vaultName);
       setDetail(itemDetail);
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : "An unknown error occurred";
@@ -415,7 +415,7 @@ export default function Command() {
                       shortcut={{ modifiers: ["cmd"], key: "c" }}
                       onAction={async () => {
                         try {
-                          const detail = await getItem(item.shareId, item.itemId);
+                          const detail = await getItem(item.shareId, item.itemId, item.vaultName);
                           if (detail.password) {
                             await Clipboard.copy(detail.password, {
                               transient: preferences.copyPasswordTransient ?? true,

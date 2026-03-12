@@ -1,5 +1,9 @@
 # proton-pass Changelog
 
+## [Fixes] - 2026-03-12
+
+- Fix: Preserve the known vault name in item details when `pass-cli item view` omits vault metadata
+
 ## [Windows Support] - 2026-03-12
 
 - Add Windows platform support for installed and authenticated `pass-cli.exe` users

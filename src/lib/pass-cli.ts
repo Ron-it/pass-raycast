@@ -504,12 +504,12 @@ function getTypeSpecificData(raw: Record<string, unknown>): Record<string, unkno
   return undefined;
 }
 
-function normalizeItemDetail(raw: unknown): ItemDetail {
+function normalizeItemDetail(raw: unknown, vaultNameOverride?: string): ItemDetail {
   if (!isRecord(raw)) {
     throw new PassCliError("Unexpected item details from pass-cli.", "invalid_output");
   }
 
-  const base = normalizeItem(raw);
+  const base = normalizeItem(raw, vaultNameOverride);
 
   const outerContent = isRecord(raw.content) ? raw.content : raw;
   const typeData = getTypeSpecificData(raw);
@@ -639,7 +639,7 @@ function unwrapItemResponse(data: unknown): unknown {
   return data;
 }
 
-export async function getItem(shareId: string, itemId: string): Promise<ItemDetail> {
+export async function getItem(shareId: string, itemId: string, vaultNameOverride?: string): Promise<ItemDetail> {
   if (useMockData()) {
     const mockDetail = MOCK_ITEM_DETAILS[itemId];
     if (mockDetail) return mockDetail;
@@ -652,7 +652,7 @@ export async function getItem(shareId: string, itemId: string): Promise<ItemDeta
   const data = parseJson<unknown>(output, "item view");
 
   const rawItem = unwrapItemResponse(data);
-  return normalizeItemDetail(rawItem);
+  return normalizeItemDetail(rawItem, vaultNameOverride);
 }
 
 export async function getTotpCodes(shareId: string, itemId: string): Promise<Record<string, string>> {

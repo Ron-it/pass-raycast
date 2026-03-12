@@ -7,8 +7,8 @@ Search and manage your Proton Pass items directly from Raycast.
 This repository is a standalone fork of the original Proton Pass Raycast extension from the Raycast extensions monorepo:
 
 - Upstream source: <https://github.com/raycast/extensions/tree/15e3cd2f1717ae409f5cc0707a23e10f21fbfc57/extensions/proton-pass>
-- Original extension author: `izyuumi`
-- Original listed contributor: `FeernandoOFF`
+- Original extension author: [@izyuumi](https://github.com/izyuumi)
+- Original listed contributor: [@FeernandoOFF](https://github.com/FeernandoOFF)
 
 This fork keeps the upstream Proton Pass extension as the base and adds Windows compatibility for Raycast on Windows, using an installed and authenticated `pass-cli.exe`. It also includes compatibility fixes for current Proton Pass CLI item payloads, including `Custom` items and newer `extra_fields` formats.
 
